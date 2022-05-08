@@ -118,3 +118,26 @@ def make_tree():
     for val in [10, 7, 16, 3, 9, 11, 20, 14, 17, 13, 12, 6, 5, 17, 15, 8, 4]:
         T.add(val)
     return T
+
+'''######################################################################################'''
+
+class dfs_node:
+    def __init__(self):
+        self.edges = []
+        self.index = None
+        self.neighbor = []
+        self.on_fire = False
+        self.burnt = False
+        
+        
+def dfs(node):
+    stack = [node]
+    node.on_fire = True
+    while len(stack) > 0:
+        node = stack.pop()
+        node.burnt = True
+        for n in node.edges:
+            if not n.on_fire:
+                n.on_fire = True
+                stack.push(n)
+    
